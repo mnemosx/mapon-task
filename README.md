@@ -11,11 +11,12 @@ For styling CSS modules with SASS are used.
 ### TODO
 
 - Style input fields
-- Fix form validation)
+- Fix form validation
 - Display "To" date as "Today" by default and if today's date is selected
 - Improve map design (show full width map instead of putting it into Card)
 - On "Generate" button press fetch the data necessary to display the route
 - Display car's route on the map
+- Use loading states to display spinners etc.
 - Make the app mobile friendly
 - Unit tests
 - Improve accessibility (make inputs keyboard tab-able, check color contrasts etc.)
