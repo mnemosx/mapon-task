@@ -4,10 +4,10 @@ import Card from './components/Card'
 import Inputs from './components/Inputs'
 import 'react-datepicker/dist/react-datepicker.css'
 import './App.scss'
-import GoogleMapReact from 'google-map-react'
 import { useDispatch } from 'react-redux'
 import { loadVehicles } from './store/reducers/vehicles'
 import { useSelector } from 'react-redux'
+import Map from './components/Map'
 
 function App() {
   const [showMap, setShowMap] = useState(false)
@@ -39,22 +39,7 @@ function App() {
         >
           <Inputs />
         </Card>
-        {showMap && (
-          <Card hasFooter={false}>
-            <div style={{ height: '400px', width: '100%' }}>
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
-                defaultCenter={{
-                  lat: 59.95,
-                  lng: 30.33
-                }}
-                defaultZoom={11}
-              >
-                <span>hello</span>
-              </GoogleMapReact>
-            </div>
-          </Card>
-        )}
+        {showMap && <Map />}
       </main>
     </div>
   )
