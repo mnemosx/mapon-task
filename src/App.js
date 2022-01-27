@@ -1,58 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import logo from './assets/Mapon_logo.svg'
+import Card from './components/Card'
+import Inputs from './components/Inputs'
+import 'react-datepicker/dist/react-datepicker.css'
+import './App.scss'
+import GoogleMapReact from 'google-map-react'
+import { useDispatch } from 'react-redux'
+import { loadVehicles } from './store/reducers/vehicles'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const [showMap, setShowMap] = useState(false)
+  const { vehicleNumber } = useSelector(state => state.userInputs)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadVehicles())
+  }, [dispatch])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+        <img src={logo} alt="Company logo" />
       </header>
+      <main className="App-main">
+        <Card
+          title="Route report"
+          hasFooter={true}
+          btnText="Generate"
+          disabled={
+            showMap || !vehicleNumber || !vehicleNumber === 'Select vehicle'
+          }
+          onBtnClick={setShowMap}
+        >
+          <Inputs />
+        </Card>
+        {showMap && (
+          <Card hasFooter={false}>
+            <div style={{ height: '400px', width: '100%' }}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_KEY }}
+                defaultCenter={{
+                  lat: 59.95,
+                  lng: 30.33
+                }}
+                defaultZoom={11}
+              >
+                <span>hello</span>
+              </GoogleMapReact>
+            </div>
+          </Card>
+        )}
+      </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

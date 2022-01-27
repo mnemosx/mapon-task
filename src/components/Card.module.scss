@@ -1,0 +1,42 @@
+@import '../styles/variables.scss';
+
+.card {
+  margin: 30px auto;
+  padding-top: 40px;
+  max-width: 600px;
+  background: #ffffff;
+  box-shadow: $shadowMain;
+  border-radius: $borderRadius;
+  &__title {
+    color: $textColorMain;
+    text-align: left;
+    font-size: 24px;
+    padding: 0 26px;
+  }
+  &__content {
+    padding: 0 26px 40px 26px;
+  }
+  &__footer {
+    padding: 16px 24px;
+    background-color: $backgroundLight;
+    display: flex;
+    justify-content: flex-end;
+  }
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: $borderRadius;
+    background-color: $accent;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($accent, 10%);
+    }
+    &:disabled,
+    &[disabled] {
+      background-color: #cccccc;
+      cursor: initial;
+    }
+  }
+}
