@@ -11,12 +11,16 @@ import { useSelector } from 'react-redux'
 
 function App() {
   const [showMap, setShowMap] = useState(false)
-  const { vehicleNumber } = useSelector(state => state.userInputs)
+  const { vehicleNumber, dateFrom } = useSelector(state => state.userInputs)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(loadVehicles())
   }, [dispatch])
+
+  const generate = () => {
+    !showMap && setShowMap(true)
+  }
 
   return (
     <div className="App">
@@ -29,9 +33,9 @@ function App() {
           hasFooter={true}
           btnText="Generate"
           disabled={
-            showMap || !vehicleNumber || !vehicleNumber === 'Select vehicle'
+            !vehicleNumber || !dateFrom || vehicleNumber === 'Select vehicle'
           }
-          onBtnClick={setShowMap}
+          onBtnClick={generate}
         >
           <Inputs />
         </Card>
