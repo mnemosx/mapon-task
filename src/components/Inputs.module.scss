@@ -6,6 +6,7 @@
   color: red;
 }
 .inputs {
+  padding: 0 26px;
   &__row {
     display: flex;
     &:not(:nth-child(1)) {

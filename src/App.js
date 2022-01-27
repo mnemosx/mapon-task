@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { loadVehicles } from './store/reducers/vehicles'
 import { useSelector } from 'react-redux'
 import Map from './components/Map'
+import Stats from './components/Stats'
 
 function App() {
   const [showMap, setShowMap] = useState(false)
@@ -38,8 +39,13 @@ function App() {
           onBtnClick={generate}
         >
           <Inputs />
+          {showMap && (
+            <>
+              <Map />
+              <Stats />
+            </>
+          )}
         </Card>
-        {showMap && <Map />}
       </main>
     </div>
   )
