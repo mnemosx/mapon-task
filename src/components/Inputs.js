@@ -7,15 +7,23 @@ import {
   dateFromChanged,
   dateToChanged
 } from '../store/reducers/userInputs'
+import CustomSelect from './CustomSelect'
 
 export default function Inputs() {
   const dispatch = useDispatch()
 
-  const vehicles = useSelector(state => state.vehicles.list?.data?.units)
+  const {
+    list: { data: { units: vehicles } = [] },
+    loading
+  } = useSelector(state => state.vehicles)
+
   const { vehicleNumber, dateFrom, dateTo } = useSelector(
     state => state.userInputs
   )
-  const vehicleOptions = vehicles?.map(vehicle => vehicle.number) || []
+  const vehicleOptions = vehicles?.map(vehicle => ({
+    value: vehicle.number,
+    label: vehicle.number
+  }))
 
   const setDate = (type, date) => {
     if (type === 'from') {
@@ -27,27 +35,23 @@ export default function Inputs() {
     }
   }
 
-  // const setVehicle = ({ type, value }) => {}
   return (
     <div className={styles.inputs}>
       <div className={styles.inputs__row}>
-        <label
-          htmlFor="select-vehicle"
+        <p
           className={`${styles.inputs__label} ${styles['inputs__label--left']}`}
         >
-          <span className={styles.required}>Vehicle number</span>
-        </label>
-        <select
-          type="select"
-          id="select-vehicle"
-          value={vehicleNumber}
-          onChange={e => dispatch(vehicleChanged(e.target.value))}
-        >
-          <option label="Select vehicle">Select vehicle</option>
-          {vehicleOptions.map(vehicle => (
-            <option key={vehicle}>{vehicle}</option>
-          ))}
-        </select>
+          Vehicle <span className={styles.required}>number</span>
+        </p>
+        <div className={styles.inputs__select}>
+          <CustomSelect
+            defaultValue={vehicleNumber}
+            onChange={option => dispatch(vehicleChanged(option.value))}
+            options={vehicleOptions}
+            isLoading={loading}
+            placeholder="Select vehicle"
+          />
+        </div>
       </div>
       <div className={styles.inputs__row}>
         <span

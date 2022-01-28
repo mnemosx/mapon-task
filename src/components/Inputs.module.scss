@@ -1,32 +1,36 @@
 @import '../styles/variables.scss';
 
-.required::after {
-  content: ' *';
-  display: inline-block;
-  color: red;
+.required {
+  position: relative;
+  padding-right: 8px;
+  &::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: ' *';
+    color: red;
+  }
 }
 .inputs {
   padding: 0 26px;
   margin-bottom: 40px;
   &__row {
     display: flex;
+    justify-content: space-between;
+    &:nth-child(1) {
+      .inputs__label {
+        margin: auto 0;
+      }
+    }
     &:not(:nth-child(1)) {
       margin-top: 16px;
     }
   }
   &__label {
     font-size: $textSizeSm;
-    &--left {
-      flex: 1 0;
-      justify-content: space-between;
-      align-items: center;
-      display: flex;
-    }
-    &--top {
-      text-align: left;
-    }
+    text-align: left;
   }
-  select,
+  &__select,
   .date-input-container {
     width: 70%;
   }
