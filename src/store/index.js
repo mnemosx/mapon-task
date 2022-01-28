@@ -4,10 +4,12 @@ import api from './middleware/api'
 import { combineReducers } from 'redux'
 
 import vehicles from './reducers/vehicles'
+import routes from './reducers/routes'
 import userInputs from './reducers/userInputs'
 
 const rootReducer = combineReducers({
   vehicles,
+  routes,
   userInputs
 })
 

@@ -17,11 +17,9 @@ export default function Inputs() {
     loading
   } = useSelector(state => state.vehicles)
 
-  const { vehicleNumber, dateFrom, dateTo } = useSelector(
-    state => state.userInputs
-  )
+  const { vehicle, dateFrom, dateTo } = useSelector(state => state.userInputs)
   const vehicleOptions = vehicles?.map(vehicle => ({
-    value: vehicle.number,
+    value: vehicle.unit_id,
     label: vehicle.number
   }))
 
@@ -45,8 +43,8 @@ export default function Inputs() {
         </p>
         <div className={styles.inputs__select}>
           <CustomSelect
-            defaultValue={vehicleNumber}
-            onChange={option => dispatch(vehicleChanged(option.value))}
+            defaultValue={vehicle}
+            onChange={option => dispatch(vehicleChanged(option))}
             options={vehicleOptions}
             isLoading={loading}
             placeholder="Select vehicle"

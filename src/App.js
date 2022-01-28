@@ -9,17 +9,31 @@ import { loadVehicles } from './store/reducers/vehicles'
 import { useSelector } from 'react-redux'
 import Map from './components/Map'
 import Stats from './components/Stats'
+import { loadRoutes } from './store/reducers/routes'
 
 function App() {
   const [showMap, setShowMap] = useState(false)
-  const { vehicleNumber, dateFrom } = useSelector(state => state.userInputs)
+  const {
+    vehicle: { value: vehicleId },
+    dateFrom,
+    dateTo
+  } = useSelector(state => state.userInputs)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(loadVehicles())
   }, [dispatch])
 
+  const formatDate = date => date.toISOString().replace(/[.,][0-9]{3}/, '')
+
   const generate = () => {
+    dispatch(
+      loadRoutes({
+        unit_id: vehicleId,
+        from: formatDate(dateFrom),
+        till: formatDate(dateTo)
+      })
+    )
     !showMap && setShowMap(true)
   }
 
@@ -33,9 +47,7 @@ function App() {
           title="Route report"
           hasFooter={true}
           btnText="Generate"
-          disabled={
-            !vehicleNumber || !dateFrom || vehicleNumber === 'Select vehicle'
-          }
+          disabled={!vehicleId || !dateFrom}
           onBtnClick={generate}
         >
           <Inputs />

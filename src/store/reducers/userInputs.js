@@ -3,14 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const slice = createSlice({
   name: 'userInputs',
   initialState: {
-    vehicleNumber: '',
+    vehicle: '',
     dateFrom: '',
     dateTo: new Date()
   },
 
   reducers: {
     vehicleChanged: (state, action) => {
-      state.vehicleNumber = action.payload
+      state.vehicle = action.payload
     },
     dateFromChanged: (state, action) => {
       state.dateFrom = action.payload
