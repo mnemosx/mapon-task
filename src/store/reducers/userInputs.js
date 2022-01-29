@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { formatDateToISO } from '../../utils'
 
 const slice = createSlice({
   name: 'userInputs',
   initialState: {
     vehicle: '',
     dateFrom: '',
-    dateTo: new Date()
+    dateTo: formatDateToISO(new Date())
   },
 
   reducers: {

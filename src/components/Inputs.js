@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './Inputs.module.scss'
 import DatePicker from 'react-datepicker'
+import { parseISO } from 'date-fns'
+import { formatDateToISO } from '../utils'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   vehicleChanged,
@@ -25,11 +27,11 @@ export default function Inputs() {
 
   const setDate = (type, date) => {
     if (type === 'from') {
-      dispatch(dateFromChanged(date))
+      dispatch(dateFromChanged(formatDateToISO(date)))
       return
     }
     if (type === 'to') {
-      dispatch(dateToChanged(date))
+      dispatch(dateToChanged(formatDateToISO(date)))
     }
   }
 
@@ -65,7 +67,7 @@ export default function Inputs() {
             From
             <DatePicker
               wrapperClassName="datePicker"
-              selected={dateFrom}
+              selected={dateFrom && parseISO(dateFrom)}
               onChange={date => setDate('from', date)}
             />
           </label>
@@ -76,7 +78,7 @@ export default function Inputs() {
             To
             <DatePicker
               className={styles['datepicker-to']}
-              selected={dateTo}
+              selected={dateTo && parseISO(dateTo)}
               onChange={date => setDate('to', date)}
             />
           </label>
