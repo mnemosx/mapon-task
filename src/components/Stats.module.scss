@@ -4,4 +4,21 @@
   margin: 24px 40px;
   display: flex;
   justify-content: center;
+  &__box {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    &:not(:last-child) {
+      border-right: 1px solid $border;
+    }
+    text-align: center;
+  }
+  &__data {
+    font-size: 30px;
+    color: $textColorMain;
+  }
+  &__subtext {
+    font-size: 13px;
+    color: $textColorLight;
+  }
 }
