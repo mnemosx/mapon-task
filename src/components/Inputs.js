@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './Inputs.module.scss'
 import DatePicker from 'react-datepicker'
-import { parseISO } from 'date-fns'
-import { formatDateToISO } from '../utils'
+import { parseISO, subDays } from 'date-fns'
+import { formatDateToISO, isDateBeforeOtherDate } from '../utils'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   vehicleChanged,
@@ -20,18 +20,29 @@ export default function Inputs() {
   } = useSelector(state => state.vehicles)
 
   const { vehicle, dateFrom, dateTo } = useSelector(state => state.userInputs)
+
+  const minDate = useRef(subDays(parseISO(dateTo), 31))
+
   const vehicleOptions = vehicles?.map(vehicle => ({
     value: vehicle.unit_id,
     label: vehicle.number
   }))
 
-  const setDate = (type, date) => {
+  const setDate = (type, newDate) => {
     if (type === 'from') {
-      dispatch(dateFromChanged(formatDateToISO(date)))
-      return
+      dispatch(dateFromChanged(formatDateToISO(newDate)))
     }
     if (type === 'to') {
-      dispatch(dateToChanged(formatDateToISO(date)))
+      minDate.current = subDays(newDate, 31)
+      if (dateFrom) {
+        if (isDateBeforeOtherDate(newDate, dateFrom)) {
+          dispatch(dateFromChanged(formatDateToISO(newDate)))
+        }
+        if (isDateBeforeOtherDate(dateFrom, minDate.current)) {
+          dispatch(dateFromChanged(formatDateToISO(minDate.current)))
+        }
+      }
+      dispatch(dateToChanged(formatDateToISO(newDate)))
     }
   }
 
@@ -67,8 +78,10 @@ export default function Inputs() {
             From
             <DatePicker
               wrapperClassName="datePicker"
-              selected={dateFrom && parseISO(dateFrom)}
               onChange={date => setDate('from', date)}
+              selected={dateFrom && parseISO(dateFrom)}
+              minDate={minDate.current}
+              maxDate={parseISO(dateTo)}
             />
           </label>
           <label
@@ -80,6 +93,7 @@ export default function Inputs() {
               className={styles['datepicker-to']}
               selected={dateTo && parseISO(dateTo)}
               onChange={date => setDate('to', date)}
+              maxDate={Date.now()}
             />
           </label>
         </div>
