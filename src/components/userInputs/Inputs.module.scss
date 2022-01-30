@@ -1,4 +1,4 @@
-@import '../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .required {
   position: relative;
@@ -36,7 +36,7 @@
   }
 }
 
-.datePickers {
+.dateInputs {
   width: 70%;
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@
   }
   .today {
     position: absolute;
-    bottom: 4px;
+    bottom: 2px;
     left: 10px;
     width: 60%;
     height: 26px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import Select, { components } from 'react-select'
-import { ReactComponent as Down } from '../assets/icons/down.svg'
+import { ReactComponent as Down } from '../../assets/icons/down.svg'
 
 const customStyles = {
   option: provided => ({

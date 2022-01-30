@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from './assets/Mapon_logo.svg'
 import Card from './components/Card'
-import Inputs from './components/Inputs'
+import Inputs from './components/userInputs/Inputs'
 import 'react-datepicker/dist/react-datepicker.css'
 import './App.scss'
 import { useDispatch } from 'react-redux'
