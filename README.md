@@ -8,18 +8,34 @@ For styling CSS modules with SASS are used.
 
 ---
 
+### Description
+
+Users are able to select a car from the list of available cars and the time
+period (days).
+Using the Mapon API and the Google Maps API, the map shows the route taken
+by the selected car.
+
+### Design
+
+[Figma](https://www.figma.com/file/TBfw8jRll5bId68KXeqXL6/front-end-task?node-id=0%3A2)
+
 ### TODO
 
-- Style input fields
-- Fix form validation
+- Style input fields (~~select~~, datepickers)
+- Fix form validation (dateTill > dateFrom, period <= 31 day)
 - Display "To" date as "Today" by default and if today's date is selected
 - ~~Fix map design (show full width map in the same Card)~~
-- On "Generate" button press fetch the data necessary to display the route
-- Display car's route on the map
+- ~~On "Generate" button press fetch the data necessary to display the route~~
+- ~~Display car's route on the map~~
+- Show third stat (time spent on road including stops?)
 - Use loading states to display spinners etc.
+- Don't make an api call if inputs have not changed
+-
 - Make the app mobile friendly
 - Unit tests
 - Improve accessibility (make inputs keyboard tab-able, check color contrasts etc.)
+
+---
 
 ## Available Scripts
 
