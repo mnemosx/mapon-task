@@ -30,6 +30,13 @@
       position: relative;
       border: 1px solid $border;
       border-radius: $borderRadius;
+      transition: all 0.2s ease;
+      &:hover {
+        border: 1px solid #b3b3b3;
+      }
+      &:focus-within {
+        border: 1px solid $accent;
+      }
       &::after {
         content: '';
         position: absolute;
@@ -44,9 +51,10 @@
       input[type='text'] {
         border: none;
         border-radius: $borderRadius;
-        height: 32px;
+        height: 30px;
         text-indent: 10px;
         width: calc(100% - 40px);
+        outline: none;
       }
     }
   }

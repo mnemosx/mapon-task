@@ -22,7 +22,8 @@ const customStyles = {
     cursor: 'pointer',
     minHeight: 'unset',
     height: '32px',
-    alignContent: 'center'
+    alignContent: 'center',
+    boxShadow: 'none'
   }),
   singleValue: provided => ({
     ...provided,

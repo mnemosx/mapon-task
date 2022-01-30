@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} alt="Company logo" />
+        <img src={logo} alt="Company logo" width="160" height="51" />
       </header>
       <main className="App-main">
         <Card
