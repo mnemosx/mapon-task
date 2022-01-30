@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import styles from './Map.module.scss'
+import styles from 'styles/Map.module.scss'
 import GoogleMapReact from 'google-map-react'
 import { useSelector } from 'react-redux'
-import { ReactComponent as Marker } from '../assets/icons/marker.svg'
+import { ReactComponent as Marker } from 'assets/icons/marker.svg'
+import variables from 'styles/_exports.scss'
 
 export default function Map() {
   const [mapData, setMapData] = useState(null)
@@ -35,7 +36,7 @@ export default function Map() {
     markers.forEach(marker => {
       const line = new maps.Polyline({
         path: maps.geometry.encoding.decodePath(marker.polyline),
-        strokeColor: '#39B0FA',
+        strokeColor: variables.route,
         strokeOpacity: 1.0,
         strokeWeight: 4
       })
@@ -67,12 +68,12 @@ export default function Map() {
         defaultZoom={8}
       >
         <Marker
-          className={styles.map__marker}
+          className={styles.marker}
           lat={markers[0].lat}
           lng={markers[0].lng}
         />
         <Marker
-          className={styles.map__marker}
+          className={styles.marker}
           lat={markers[markers.length - 1].lat}
           lng={markers[markers.length - 1].lng}
         />

@@ -1,0 +1,88 @@
+@import 'variables';
+
+.container {
+  padding: 0 26px;
+  margin-bottom: 40px;
+  .row {
+    display: flex;
+    justify-content: space-between;
+    &:nth-child(1) {
+      .label {
+        margin: auto 0;
+      }
+    }
+    &:not(:nth-child(1)) {
+      margin-top: 16px;
+    }
+    .label {
+      font-size: $textSizeSm;
+      text-align: left;
+      position: relative;
+    }
+    .selectContainer {
+      width: 70%;
+    }
+    .dateInputs {
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
+      font-size: $textSizeSm;
+      .datePicker {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        width: 49%;
+        position: relative;
+      }
+      .today {
+        position: absolute;
+        bottom: 2px;
+        left: 10px;
+        width: 60%;
+        height: 26px;
+        z-index: 1;
+        background-color: white;
+        cursor: text;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+:global .react-datepicker {
+  &__input-container {
+    .custom-input-wrapper {
+      position: relative;
+      border: 1px solid $border;
+      border-radius: $borderRadius;
+      transition: all 0.2s ease;
+      &:hover {
+        border: 1px solid #b3b3b3;
+      }
+      &:focus-within {
+        border: 1px solid $accent;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 20px;
+        background: url(../assets/icons/calendar.svg) no-repeat center;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        z-index: 2;
+      }
+      input[type='text'] {
+        border: none;
+        border-radius: $borderRadius;
+        height: 30px;
+        text-indent: 10px;
+        width: calc(100% - 40px);
+        outline: none;
+      }
+    }
+  }
+}

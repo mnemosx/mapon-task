@@ -1,10 +1,10 @@
-@import '../styles/variables.scss';
+@import 'variables';
 
 .stats {
   margin: 24px 40px;
   display: flex;
   justify-content: center;
-  &__box {
+  .box {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -13,11 +13,11 @@
     }
     text-align: center;
   }
-  &__data {
+  .data {
     font-size: 30px;
     color: $textColorMain;
   }
-  &__subtext {
+  .subtext {
     font-size: 13px;
     color: $textColorLight;
   }

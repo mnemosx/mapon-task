@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './Inputs.module.scss'
+import styles from 'styles/Inputs.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { vehicleChanged } from '../../store/reducers/userInputs'
+import { vehicleChanged } from 'store/reducers/userInputs'
 import CustomSelect from './CustomSelect'
 import DateInputs from './DateInputs'
 
@@ -21,12 +21,12 @@ export default function Inputs() {
   }))
 
   return (
-    <div className={styles.inputs}>
-      <div className={styles.inputs__row}>
-        <p className={styles.inputs__label}>
-          Vehicle <span className={styles.required}>number</span>
+    <div className={styles.container}>
+      <div className={styles.row}>
+        <p className={styles.label}>
+          Vehicle <span className="required">number</span>
         </p>
-        <div className={styles.inputs__select}>
+        <div className={styles.selectContainer}>
           <CustomSelect
             defaultValue={vehicle}
             onChange={option => dispatch(vehicleChanged(option))}
@@ -36,8 +36,8 @@ export default function Inputs() {
           />
         </div>
       </div>
-      <div className={styles.inputs__row}>
-        <span className={styles.inputs__label}>Period</span>
+      <div className={styles.row}>
+        <span className={styles.label}>Period</span>
         <DateInputs />
       </div>
     </div>

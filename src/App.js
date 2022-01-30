@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import logo from './assets/Mapon_logo.svg'
-import Card from './components/Card'
-import Inputs from './components/userInputs/Inputs'
+import logo from 'assets/Mapon_logo.svg'
+import Card from 'components/Card'
+import Inputs from 'components/userInputs/Inputs'
 import 'react-datepicker/dist/react-datepicker.css'
 import './App.scss'
 import { useDispatch } from 'react-redux'
-import { loadVehicles } from './store/reducers/vehicles'
+import { loadVehicles } from 'store/reducers/vehicles'
 import { useSelector } from 'react-redux'
-import Map from './components/Map'
-import Stats from './components/Stats'
-import { loadRouteData } from './store/reducers/route'
+import Map from 'components/Map'
+import Stats from 'components/Stats'
+import { loadRouteData } from 'store/reducers/route'
 
 function App() {
   const [showMap, setShowMap] = useState(false)

@@ -1,6 +1,7 @@
 import React from 'react'
 import Select, { components } from 'react-select'
-import { ReactComponent as Down } from '../../assets/icons/down.svg'
+import { ReactComponent as Down } from 'assets/icons/down.svg'
+import variables from 'styles/_exports.scss'
 
 const customStyles = {
   option: provided => ({
@@ -18,7 +19,7 @@ const customStyles = {
     fontSize: 14,
     textAlign: 'left',
     padding: 0,
-    border: '1px solid #DCDEE0',
+    border: `1px solid ${variables.border}`,
     cursor: 'pointer',
     minHeight: 'unset',
     height: '32px',
@@ -32,7 +33,7 @@ const customStyles = {
   }),
   placeholder: provided => ({
     ...provided,
-    color: '#384045',
+    color: variables.textColorMain,
     marginTop: '3px'
   }),
   dropdownIndicator: (base, state) => ({
@@ -73,7 +74,7 @@ export default function CustomSelect({
         ...theme,
         colors: {
           ...theme.colors,
-          primary: '#98ca02'
+          primary: variables.accent
         }
       })}
     />

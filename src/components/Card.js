@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './Card.module.scss'
+import styles from 'styles/Card.module.scss'
 
 export default function Card({
   title = '',
@@ -12,14 +12,14 @@ export default function Card({
 }) {
   return (
     <section className={styles.card}>
-      <h2 className={styles.card__title}>{title}</h2>
-      <div className={styles.card__content}>{children}</div>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.content}>{children}</div>
       {hasFooter && (
-        <div className={styles.card__footer}>
+        <div className={styles.footer}>
           {btnText && (
             <button
               type="button"
-              className={styles.card__button}
+              className={styles.button}
               disabled={disabled}
               onClick={onBtnClick}
             >

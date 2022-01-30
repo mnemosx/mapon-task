@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import styles from './Inputs.module.scss'
+import styles from 'styles/Inputs.module.scss'
 import DatePicker from 'react-datepicker'
 import { parseISO, subDays, parse, isToday } from 'date-fns'
-import { formatDateToISO, isDateBeforeOtherDate } from '../../utils'
+import { formatDateToISO, isDateBeforeOtherDate } from 'utils'
 import { useDispatch, useSelector } from 'react-redux'
-import { dateFromChanged, dateToChanged } from '../../store/reducers/userInputs'
+import { dateFromChanged, dateToChanged } from 'store/reducers/userInputs'
 import CustomDateInput from './CustomDateInput'
 
 export default function DateInputs() {
