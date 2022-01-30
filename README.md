@@ -21,9 +21,9 @@ by the selected car.
 
 ### TODO
 
-- Style input fields (~~select~~, datepickers)
-- Fix form validation (dateTill > dateFrom, period <= 31 day)
-- Display "To" date as "Today" by default and if today's date is selected
+- ~~Style input fields (select, datepickers)~~
+- ~~Fix form validation (dateTill > dateFrom, period <= 31 day)~~
+- ~~Display "To" date as "Today" by default and if today's date is selected~~
 - ~~Fix map design (show full width map in the same Card)~~
 - ~~On "Generate" button press fetch the data necessary to display the route~~
 - ~~Display car's route on the map~~

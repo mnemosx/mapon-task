@@ -9,6 +9,10 @@ const customStyles = {
     textAlign: 'left',
     fontSize: 14
   }),
+  menu: provided => ({
+    ...provided,
+    zIndex: 3
+  }),
   control: provided => ({
     ...provided,
     fontSize: 14,

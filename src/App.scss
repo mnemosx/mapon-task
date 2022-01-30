@@ -23,3 +23,31 @@
   align-items: center;
   justify-content: center;
 }
+
+.react-datepicker {
+  &__input-container {
+    .custom-input-wrapper {
+      position: relative;
+      border: 1px solid $border;
+      border-radius: $borderRadius;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 20px;
+        background: url(./assets/icons/calendar.svg) no-repeat center;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        z-index: 2;
+      }
+      input[type='text'] {
+        border: none;
+        border-radius: $borderRadius;
+        height: 32px;
+        text-indent: 10px;
+        width: calc(100% - 40px);
+      }
+    }
+  }
+}
