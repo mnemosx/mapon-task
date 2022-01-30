@@ -23,6 +23,7 @@ export default function Map() {
       })
       polylines.current = []
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [markers])
 
   const onMapLoad = map => {

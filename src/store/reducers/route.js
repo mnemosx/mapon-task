@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { apiCallBegan } from '../api'
-import { parseISO, differenceInMinutes, formatDuration } from 'date-fns'
+import { parseISO, differenceInMinutes } from 'date-fns'
 
 const slice = createSlice({
   name: 'route',
