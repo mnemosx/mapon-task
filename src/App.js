@@ -9,32 +9,35 @@ import { loadVehicles } from './store/reducers/vehicles'
 import { useSelector } from 'react-redux'
 import Map from './components/Map'
 import Stats from './components/Stats'
-import { loadRoutes } from './store/reducers/routes'
+import { loadRouteData } from './store/reducers/route'
 
 function App() {
   const [showMap, setShowMap] = useState(false)
+
   const {
     vehicle: { value: vehicleId },
     dateFrom,
     dateTo
   } = useSelector(state => state.userInputs)
+
+  const { routeMarkers } = useSelector(state => state.route)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(loadVehicles())
   }, [dispatch])
 
-  const formatDate = date => date.toISOString().replace(/[.,][0-9]{3}/, '')
-
   const generate = () => {
     dispatch(
-      loadRoutes({
+      loadRouteData({
         unit_id: vehicleId,
-        from: formatDate(dateFrom),
-        till: formatDate(dateTo)
+        from: dateFrom,
+        till: dateTo
       })
     )
-    !showMap && setShowMap(true)
+
+    setShowMap(true)
   }
 
   return (
@@ -51,11 +54,17 @@ function App() {
           onBtnClick={generate}
         >
           <Inputs />
-          {showMap && (
+          {routeMarkers?.length ? (
             <>
               <Map />
               <Stats />
             </>
+          ) : (
+            showMap && (
+              <div className="no-map-msg">
+                <p>No routes found</p>
+              </div>
+            )
           )}
         </Card>
       </main>
